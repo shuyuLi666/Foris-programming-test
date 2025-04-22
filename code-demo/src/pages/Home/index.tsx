@@ -1,4 +1,4 @@
-import { Button, List, NavBar, TabBar, Space, Image } from "antd-mobile";
+import { Button, NavBar, TabBar, Space, Image } from "antd-mobile";
 import {
   SetOutline,
   ScanningOutline,
@@ -10,6 +10,7 @@ import {
 import "./style.css";
 import Wallet from "@/pages/Wallet";
 import logo from "@/assets/logo.png";
+import { useState } from "react";
 
 const Home = () => {
   const right = (
@@ -33,6 +34,7 @@ const Home = () => {
     { key: "defi", title: "DeFi", icon: <AppOutline /> },
   ];
 
+  const [lastestBalance, setLastestBalance] = useState<string>("");
   return (
     <div className="wallet-container">
       <NavBar back={null} className="nav-bar" right={right} left={left} />
@@ -49,7 +51,7 @@ const Home = () => {
             <div>crypto.com | DEFI WALLET</div>
           </div>
           <div className="balance-amount">
-            $<span className="balance">36.68</span>USD
+            $<span className="balance">{lastestBalance}</span>USD
           </div>
         </div>
         <div className="action-buttons">
@@ -73,7 +75,9 @@ const Home = () => {
           </div>
         </div>
 
-        <Wallet />
+        <Wallet
+          setLastestBalance={setLastestBalance}
+        />
       </div>
 
       <TabBar className="bottom-tabbar">

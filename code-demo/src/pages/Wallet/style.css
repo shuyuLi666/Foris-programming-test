@@ -9,7 +9,6 @@
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  border: 1px solid black;
   border-radius: 20px 20px 0px 0px;
   background-color: white;
   height: 100%;
@@ -83,4 +82,8 @@
 
 .adm-list-body-inner {
   margin-top: 0px;
+}
+
+.currency{
+  margin-left: 5px
 }

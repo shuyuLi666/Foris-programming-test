@@ -1,11 +1,11 @@
 import { http } from "@/utils";
-type CurrencyResType<T> = {
-  currencies: T;
+export type CurrencyResType = {
+  currencies: [CurrencyItem];
   total: number;
   ok: boolean;
 };
 
-type CurrencyItem = {
+export type CurrencyItem = {
   coin_id: string;
   name: string;
   symbol: string;
@@ -30,13 +30,9 @@ type CurrencyItem = {
   num_confirmation_required: number;
 };
 
-type CurrencyRes = {
-  currencies: CurrencyItem[];
-};
-
 export function getCurrenciesAPI() {
-  return http.request<CurrencyResType<CurrencyRes>>({
-    url: "/currencies",
+  return http.request<CurrencyResType>({
+    url: "/currencies.json",
   });
 }
 
@@ -45,7 +41,7 @@ type Rate = {
   rate: string;
 };
 
-type TierItem = {
+export type TierItem = {
   from_currency: string;
   to_currency: string;
   rates: Rate[];
@@ -60,11 +56,11 @@ type RateResType = {
 
 export function getLiveRateAPI() {
   return http.request<RateResType>({
-    url: "/live-rates",
+    url: "/live-rates.json",
   });
 }
 
-type WalletItem = {
+export type WalletItem = {
   currency: string;
   amount: number;
 };
@@ -77,6 +73,8 @@ type WalletBalanceRes = {
 
 export function getBalanceAPI() {
   return http.request<WalletBalanceRes>({
-    url: "/live-rates",
+    url: "/wallet-balance.json",
   });
 }
+
+
