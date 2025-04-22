@@ -1,0 +1,101 @@
+.wallet-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .nav-bar {
+    flex-shrink: 0;
+
+    height: 60px;
+  }
+
+  .balance-section {
+    padding: 10px 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .balance-amount {
+    font-size: 24px;
+    font-weight: 300;
+    color: rgb(117, 117, 117);
+    margin-top: 10px;
+  }
+  .balance {
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+    margin: 0px 5px;
+  }
+  .action-buttons {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .button-left,
+  .button-right {
+    flex: 1;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
+  }
+
+  .bottom-tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: rgb(10, 30, 61);
+  color: white;
+}
+
+#root {
+  height: 100%;
+}
+
+.setCard {
+  border: 1px solid black;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(240, 244, 254);
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.set-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.set-btn-text {
+  margin-top: 5px;
+}
