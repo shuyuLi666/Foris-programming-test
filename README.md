@@ -5,5 +5,5 @@
 - typescript version: ~5.7.2
 
 2. Command to start the project
-$ npm i
-$ npm run dev
+ npm i
+ npm run dev
