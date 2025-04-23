@@ -1,4 +1,4 @@
-// Wallet.tsx
+// Wallet.tsx show balance and exchange
 import { Image, List } from "antd-mobile";
 import "./style.css";
 import { useWalletStore } from "@/store/wallet";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 //support the following currencies: BTC, ETH, and CRO.
 const SUPPORTED_CURRENCIES = new Set(["BTC", "ETH", "CRO"]);
 interface WalletProps {
-  setLastestBalance: (balance: string) => "";
+  setLastestBalance: (balance: string) => void;
 }
 const Wallet: React.FC<WalletProps> = ({ setLastestBalance }) => {
   const { balance, liveRate, currencies, fetchData } = useWalletStore();
@@ -38,16 +38,15 @@ const Wallet: React.FC<WalletProps> = ({ setLastestBalance }) => {
     return balance
       .filter((item) => SUPPORTED_CURRENCIES.has(item.currency))
       .map((walletItem) => {
-        const currency = currencies.find((c) => c.code === walletItem.currency);
+        const currency = currencies.find((currenciesItem) => currenciesItem.code === walletItem.currency);
         const rateTier = liveRate.find(
-          (t) =>
-            t.from_currency === walletItem.currency && t.to_currency === "USD"
+          (tire) =>
+          tire.from_currency === walletItem.currency && tire.to_currency === "USD"
         );
         const rate = rateTier?.rates?.[0]?.rate
           ? parseFloat(rateTier.rates[0].rate)
           : 0;
         const usdValue = walletItem.amount * rate;
-
         const decimals = currency?.display_decimal ?? 8;
         return {
           currency: walletItem.currency,
@@ -61,7 +60,7 @@ const Wallet: React.FC<WalletProps> = ({ setLastestBalance }) => {
       });
   }, [balance, currencies, liveRate]);
 
-  useMemo(() => {
+  useEffect(() => {
     const totalBalance = dataList
       .reduce((sum, item) => sum + item.usdValue, 0)
       .toLocaleString(undefined, {
@@ -69,7 +68,6 @@ const Wallet: React.FC<WalletProps> = ({ setLastestBalance }) => {
         maximumFractionDigits: 2,
       });
     setLastestBalance(totalBalance);
-    return totalBalance;
   }, [dataList, setLastestBalance]);
   const navigate = useNavigate();
   const handleClick = (currency: string) => {
@@ -105,6 +103,7 @@ const Wallet: React.FC<WalletProps> = ({ setLastestBalance }) => {
               </div>
             }
             onClick={() => handleClick(item.currency)}
+            arrowIcon={false}
           >
             <div className="middle-wrapper">
               <div className="name-wrapper">

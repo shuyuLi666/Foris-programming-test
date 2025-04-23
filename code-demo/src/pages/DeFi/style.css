@@ -1,0 +1,10 @@
+.defi-container{
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border-radius: 20px 20px 0px 0px;
+    background-color: white;
+    height: 100%;
+    color: black;
+    text-align: center;
+}

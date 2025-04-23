@@ -10,7 +10,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   border-radius: 20px 20px 0px 0px;
-  background-color: white;
+  background-color: rgb(244, 250, 254);
   height: 100%;
 }
 
@@ -30,11 +30,12 @@
 .card-item {
   background-color: white;
   margin-bottom: 12px;
-  border: 1px solid rgb(211, 215, 218);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px !important;
   padding: 0px 2px 0px 2px !important;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .content-wrapper {
@@ -84,6 +85,6 @@
   margin-top: 0px;
 }
 
-.currency{
-  margin-left: 5px
+.currency {
+  margin-left: 5px;
 }

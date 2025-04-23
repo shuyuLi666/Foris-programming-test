@@ -1,4 +1,4 @@
-import { Button, NavBar, TabBar, Space, Image } from "antd-mobile";
+import { Button, NavBar, Space, Image } from "antd-mobile";
 import {
   SetOutline,
   ScanningOutline,
@@ -9,9 +9,10 @@ import {
 } from "antd-mobile-icons";
 import "./style.css";
 import Wallet from "@/pages/Wallet";
+import DeFi from "../DeFi";
 import logo from "@/assets/logo.png";
 import { useState } from "react";
-
+import Tab from "@/pages/Tab";
 const Home = () => {
   const right = (
     <div style={{ fontSize: 24 }}>
@@ -35,6 +36,8 @@ const Home = () => {
   ];
 
   const [lastestBalance, setLastestBalance] = useState<string>("");
+  const [activeTab, setActiveTab] = useState("wallet");
+
   return (
     <div className="wallet-container">
       <NavBar back={null} className="nav-bar" right={right} left={left} />
@@ -74,17 +77,21 @@ const Home = () => {
             <div className="set-btn-text">Receive</div>
           </div>
         </div>
-
-        <Wallet
-          setLastestBalance={setLastestBalance}
-        />
+        <div className="tab-container">
+          {activeTab === "wallet" ? (
+            <Wallet setLastestBalance={setLastestBalance} />
+          ) : (
+            <DeFi />
+          )}
+        </div>
       </div>
-
-      <TabBar className="bottom-tabbar">
-        {tabs.map((item) => (
-          <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-        ))}
-      </TabBar>
+       <div>
+      <Tab
+        tabs={tabs}
+        activeTab={activeTab}
+        changeTab={setActiveTab}
+      />
+    </div>
     </div>
   );
 };
